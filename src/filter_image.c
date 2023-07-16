@@ -8,13 +8,17 @@
 
 void l1_normalize(image im)
 {
-    // TODO
+    float sum=0;
+    for(int i=0;i<im.h*im.w*im.c;i++)
+    sum+=im.data[i];
+    for(int i=0;i<im.h*im.w*im.c;i++)
+    im.data[i]=im.data[i]/sum;
 }
 
-image make_box_filter(int w)
+void make_box_filter(int w, image im)
 {
-    // TODO
-    return make_image(1,1,1);
+    for(int i=0;i<im.h*im.w*im.c;i++)
+    im.data[i]=im.data[i]/(w*w);
 }
 
 image convolve_image(image im, image filter, int preserve)
